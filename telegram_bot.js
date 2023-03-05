@@ -15,6 +15,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 
 async function start() {
   try {
+    /* Dont 'await' bot.launch() - See ticket: https://github.com/telegraf/telegraf/issues/1749 */
     bot.launch();
     try {
       const res = await CheckPastebin();
@@ -72,6 +73,7 @@ async function start() {
                 ],
               ],
             },
+            /* The channel doesnt need to be alerted if theres no change */
             disable_notification: true,
           }
         );

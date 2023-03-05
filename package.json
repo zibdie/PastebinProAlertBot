@@ -4,7 +4,8 @@
   "description": "",
   "main": "example.js",
   "scripts": {
-    "start": "node example.js"
+    "start": "node example.js",
+    "telegrambot": "node telegram_bot.js"
   },
   "repository": {
     "type": "git",
