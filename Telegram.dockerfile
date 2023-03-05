@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:18-alpine
 
 ENV SERVER_MODE=production
 ENV BOT_TOKEN=<Enter_your_bot_token_here>
