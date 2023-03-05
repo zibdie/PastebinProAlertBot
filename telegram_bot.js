@@ -19,6 +19,14 @@ async function start() {
     try {
       const res = await CheckPastebin();
       if (res.success === false) {
+        await bot.telegram.sendMessage(
+          chat_id,
+          `* Something went wrong attempting to fetch Pastebin Pro status. I will automatically try again later *`,
+          {
+            parse_mode: "MarkdownV2",
+            disable_notification: true,
+          }
+        );
         throw new Error(res.error);
       }
       const now = moment().tz("UTC").format("MMMM D, YYYY h:mma [UTC]");
@@ -64,7 +72,6 @@ async function start() {
                 ],
               ],
             },
-
             disable_notification: true,
           }
         );
