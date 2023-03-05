@@ -1,0 +1,21 @@
+name: Run Telegram Alerts
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Telegram Alert
+        env:
+          CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          SERVER_MODE: true
+        run: |
+          npm install
+          node telegram_bot.js

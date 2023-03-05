@@ -1,11 +1,12 @@
+const SERVER_MODE = process.env.SERVER_MODE ? true : false;
+
 async function CheckPastebin() {
   try {
     const { chromium } = require("playwright-extra");
     const stealth = require("puppeteer-extra-plugin-stealth")();
 
     chromium.use(stealth);
-
-    const browser = await chromium.launch({ headless: false });
+    const browser = await chromium.launch({ headless: SERVER_MODE });
 
     const page = await browser.newPage();
     await page.goto(`https://pastebin.com/pro`, {
