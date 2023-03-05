@@ -1,17 +1,19 @@
-FROM node:18-alpine
+FROM mcr.microsoft.com/playwright:v1.31.2-focal
 
-ENV SERVER_MODE=production
-ENV BOT_TOKEN=<Enter_your_bot_token_here>
-ENV CHAT_ID=<Enter_your_chat_id_here>
+ENV DEBIAN_FRONTEND=noninteractive
+ENV SERVER_MODE=true
+ENV BOT_TOKEN=
+ENV CHAT_ID=
 
-# Create app directory
+# Set work directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# Install dependencies
 COPY package*.json ./
 RUN npm install --production
 
 # Bundle app source
 COPY . .
 
-CMD [ "npm", "start" ]
+# Run
+CMD [ "npm", "run", "telegrambot" ]

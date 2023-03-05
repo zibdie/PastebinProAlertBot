@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { Telegraf } = require("telegraf");
+const { markdownv2: format } = require("telegram-format");
 const { CheckPastebin } = require("./function.js");
 const moment = require("moment-timezone");
 
@@ -22,7 +23,9 @@ async function start() {
       if (res.success === false) {
         await bot.telegram.sendMessage(
           chat_id,
-          `* Something went wrong attempting to fetch Pastebin Pro status. I will automatically try again later *`,
+          format.escape(
+            `* Something went wrong attempting to fetch Pastebin Pro status. I will automatically try again later *`
+          ),
           {
             parse_mode: "MarkdownV2",
             disable_notification: true,
@@ -37,7 +40,9 @@ async function start() {
           chat_id,
           { source: Buffer.from(b64screenshot, "base64") },
           {
-            caption: `⚠️ * I don't see the 'sold out' message. Pastebin Pro may be available. * ⚠️\n\n${now}`,
+            caption: format.escape(
+              `⚠️ * I don't see the 'sold out' message. Pastebin Pro may be available. * ⚠️\n\n${now}`
+            ),
             reply_markup: {
               inline_keyboard: [
                 [
@@ -62,7 +67,9 @@ async function start() {
           chat_id,
           { source: Buffer.from(res.b64screenshot, "base64") },
           {
-            caption: `I see the 'sold out' message. Pastebin Pro is not available.\n\n${now}`,
+            caption: format.escape(
+              `I see the 'sold out' message. Pastebin Pro is not available.\n\n${now}`
+            ),
             reply_markup: {
               inline_keyboard: [
                 [
