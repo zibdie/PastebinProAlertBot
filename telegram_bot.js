@@ -75,6 +75,7 @@ async function start() {
             },
             /* The channel doesnt need to be alerted if theres no change */
             disable_notification: true,
+            parse_mode: "MarkdownV2",
           }
         );
       }
