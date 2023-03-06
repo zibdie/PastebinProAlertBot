@@ -9,12 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install packages
-        run: npm install --production
-      - name: Telegram Alert
+      - name: Build Telegram Image
+        run: docker build -t telegrambot -f ./Telegram.dockerfile .
+      - name: Run Telegram Bot
         env:
           CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           SERVER_MODE: true
-        run: |
-          npm run telegrambot
+        run: docker run -e CHAT_ID -e BOT_TOKEN -e SERVER_MODE telegrambot
