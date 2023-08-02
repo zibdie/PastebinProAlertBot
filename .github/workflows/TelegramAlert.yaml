@@ -6,14 +6,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Build Telegram Image
-        run: docker build -t telegrambot -f ./Telegram.dockerfile .
-      - name: Run Telegram Bot
+    container:
+        image: zibdie/pastebinproalertbot:latest
         env:
           CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           SERVER_MODE: true
-        run: docker run -e CHAT_ID -e BOT_TOKEN -e SERVER_MODE telegrambot
+    steps:
+      - name: Run container
+        run: docker run -e CHAT_ID=$CHAT_ID -e BOT_TOKEN=$BOT_TOKEN -e SERVER_MODE=$SERVER_MODE zibdie/pastebinproalertbot:latest
