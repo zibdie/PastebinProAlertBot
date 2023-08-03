@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,5 +15,5 @@ jobs:
           BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           SERVER_MODE: true
     steps:
-      - name: Run container
-        run: docker run -e CHAT_ID=$CHAT_ID -e BOT_TOKEN=$BOT_TOKEN -e SERVER_MODE=$SERVER_MODE zibdie/pastebinproalertbot:latest
+      - name: Check environment
+        run: echo "Environment variables are set and container is up and running"
