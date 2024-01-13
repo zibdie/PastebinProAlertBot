@@ -1,4 +1,8 @@
+# Pastebin Pro Alert Bot
+
 [https://github.com/zibdie/PastebinProAlertBot](https://github.com/zibdie/PastebinProAlertBot)
+
+## Description
 
 A script that checks to see if [Pastebin Pro](https://pastebin.com/pro) is for sale. 
 
