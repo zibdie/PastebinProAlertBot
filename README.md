@@ -1,3 +1,5 @@
+[https://github.com/zibdie/PastebinProAlertBot](https://github.com/zibdie/PastebinProAlertBot)
+
 A script that checks to see if [Pastebin Pro](https://pastebin.com/pro) is for sale. 
 
 It used to be around atleast [early 2020](https://web.archive.org/web/20200531232732/https://pastebin.com/pro) but since then, it seems they have discontinued it without warning.
